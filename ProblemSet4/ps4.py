@@ -57,9 +57,6 @@ def nestEggVariable(salary, save, growthRates):
         else:
             previousBalance = previousBalance * (1 + (0.01*rate)) + (salary*save*0.01)
         balances.append(previousBalance)
-
-
-
     return balances
     """
     - salary: the amount of money you make each year.
@@ -96,6 +93,19 @@ def postRetirement(savings, growthRates, expenses):
     """
     # TODO: Your code here.
 
+    balances = []
+    previousBalance = 0
+    for rate in growthRates:
+        print(expenses)
+        multiplier = 1+0.01*rate
+        print (multiplier)
+        if (previousBalance == 0):
+            previousBalance = (savings * multiplier) - expenses
+        else:
+            previousBalance = (previousBalance * multiplier) - expenses
+        balances.append(previousBalance)
+    return balances
+    
 def testPostRetirement():
     savings     = 100000
     growthRates = [10, 5, 0, 5, 1]
@@ -146,5 +156,7 @@ def testFindMaxExpenses():
 
 print("Nest Egg Fixed Test: ") 
 testNestEggFixed()
-print("Nest Egg Variable Test: ")
+print("\nNest Egg Variable Test: ")
 testNestEggVariable()
+print("\nTest Post Retirement: ")
+testPostRetirement()
